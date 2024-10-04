@@ -1,0 +1,47 @@
+<%- include('../layouts/header'); %>
+<main class="container">
+
+    <h1> Management </h1>
+    <% if(err) { %>
+    <div class="alert alert-danger" role="alert">
+        <%= err %>
+    </div>
+    <% }%>
+    <% if(!products.length) { %>
+    <div class="alert alert-warning" role="alert">
+        Không tìm thấy dữ liệu!!
+    </div>
+    <% }%>
+
+    <form action method="get" class="d-flex justify-content-end">
+        <div class="d-flex col-4">
+            <input placeholder="name" type="text" name="q"
+                class="form-control" value="<%= q %>">
+            <button class="btn btn-primary">Search</button>
+        </div>
+
+    </form>
+    <a href="/products/new" class="btn btn-outline-info">Create</a>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Action</th>
+        </tr>
+        <% products.forEach((item)=>{ %>
+        <tr>
+            <td><%= item.id %></td>
+            <td><%= item.name %></td>
+            <td><%= item.description %></td>
+            <td><img src="<%= item.image %>"></td>
+            <td>
+                <a href="/products/delete/<%= item.id %>"
+                    class="btn btn-info">Delete</a>
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+</main>
+<%- include('../layouts/footer'); %>

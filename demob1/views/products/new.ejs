@@ -1,0 +1,14 @@
+<%- include('../layouts/header'); %>
+<main class="container">
+    <h1>New Product</h1>
+    <form action="/products/create" method="post" enctype="multipart/form-data">
+        <label for>Name</label>
+        <input name="name" type="text" class="form-control">
+        <label for>Description</label>
+        <input name="description" type="text" class="form-control">
+        <label for>Image</label>
+        <input type="file" name="image" id> <br>
+        <button class="btn btn-outline-info">Submit</button>
+    </form>
+</main>
+<%- include('../layouts/footer'); %>
