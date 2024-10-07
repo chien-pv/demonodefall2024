@@ -1,6 +1,6 @@
 class HomeController {
   static index(req, res) {
-    res.render("pages/index");
+    res.render("pages/index", { user: req.session.user });
   }
 }
 

@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const session = require("express-session");
 
 const indexRoutes = require("./routes/index");
 const userRoutes = require("./routes/user");
@@ -9,6 +10,15 @@ const productRoutes = require("./routes/product");
 const apiProductRoutes = require("./routes/api/apiProduct");
 
 const app = express();
+
+app.set("trust proxy", 1); // trust first proxy
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));

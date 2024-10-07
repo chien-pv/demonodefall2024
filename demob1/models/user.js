@@ -17,6 +17,7 @@ const createModel = (sequelize, DataTypes) => {
     {
       firstName: DataTypes.STRING,
       lastName: DataTypes.STRING,
+      password: DataTypes.TEXT,
       email: DataTypes.STRING,
     },
     {
